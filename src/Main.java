@@ -1,4 +1,6 @@
-//TODO Comentar todo el documento, revisar control de errores.
+/**
+ * Clase encagada de inicializar todos lo procesos necesarios para crear escaladores y helicopteros
+ * */
 public class Main {
     public static void main(String[] args) {
         Cima cima = new Cima();
@@ -12,16 +14,16 @@ public class Main {
             escaladores[i] = new Escalador(i + 1, cima);
             escaladores[i].start();
         }
-        for (int i = 0; i < helicopteros.length; i++) {
-            helicopteros[i].start();
+        for (Helicoptero helicoptero : helicopteros) {
+            helicoptero.start();
         }
         try {
-            for (int i = 0; i < helicopteros.length; i++) {
-                helicopteros[i].join();
+            for (Helicoptero helicoptero : helicopteros) {
+                helicoptero.join();
             }
 
-            for (int i = 0; i < escaladores.length; i++) {
-                escaladores[i].join();
+            for (Escalador escaladore : escaladores) {
+                escaladore.join();
             }
         } catch (Exception e) {
             e.printStackTrace();
